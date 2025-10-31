@@ -1,13 +1,13 @@
-🩺 MediBot: A RAG Medical Chatbot
+🩺 MedQuery: A RAG Medical Chatbot
 
-MediBot is a high-speed, local-first medical chatbot. It uses Retrieval-Augmented Generation (RAG) to answer questions based *only* on the content of your private PDF documents.
+MedQuery is a high-speed, local-first medical chatbot. It uses Retrieval-Augmented Generation (RAG) to answer questions based *only* on the content of your private PDF documents.
 
 This project is built with a modern stack, prioritizing privacy for data ingestion (local embeddings) and speed for inference (Groq's Llama 3.1 API). The interface is a clean, conversational web app built with Streamlit.
 
 ## ✨ Key Features
 
   * **Fast Conversational AI:** Powered by the **Groq** API (running Llama 3.1) for near-instant responses.
-  * **Streamlit Web App:** A simple, clean, and interactive chat interface (`medibot.py`).
+  * **Streamlit Web App:** A simple, clean, and interactive chat interface (`MedQuery.py`).
   * **Local-First & Private:**
       * **On-Prem Embeddings:** Uses `HuggingFaceEmbeddings` (`all-MiniLM-L6-v2`) to create vectors on your own machine. Your data never leaves your computer during ingestion.
       * **Local Vector Store:** Uses `FAISS` to save all vectors to your local disk in the `vectorstore/` folder.
@@ -29,7 +29,7 @@ This script builds the chatbot's "memory." It's a one-time process you run local
 3.  **Embed:** The `HuggingFaceEmbeddings` model (running 100% on-prem) converts each text chunk into a numerical vector.
 4.  **Store:** `FAISS` takes all these vectors and saves them into a highly-efficient, searchable database in the `vectorstore/db_faiss` folder.
 
-### 2\. Retrieval Phase (`medibot.py` / `connect_memory_with_llm.py`)
+### 2\. Retrieval Phase (`MedQuery.py` / `connect_memory_with_llm.py`)
 
 This is what happens every time you ask a question.
 
@@ -43,7 +43,7 @@ This is what happens every time you ask a question.
 
 ## 🚀 Getting Started
 
-Follow these steps to run your own instance of MediBot.
+Follow these steps to run your own instance of MedQuery.
 
 ### 1\. Prerequisites
 
@@ -110,7 +110,7 @@ python connect_memory_with_llm.py
 This is the main command to start the chatbot.
 
 ```bash
-streamlit run medibot.py
+streamlit run MedQuery.py
 ```
 
 Your browser will automatically open to the chat interface\!
@@ -130,7 +130,7 @@ rag medical chatbot/
 ├── .env                  (Stores your GROQ_API_KEY)
 ├── create_memory_for_llm.py  (Script 1: Run this first to create the DB)
 ├── connect_memory_with_llm.py(Script 2: Optional terminal-based test)
-├── medibot.py              (Script 3: The main Streamlit application)
+├── MedQuery.py              (Script 3: The main Streamlit application)
 ├── requirements.txt        (All Python dependencies)
 └── README.md               (This file)
 ```
